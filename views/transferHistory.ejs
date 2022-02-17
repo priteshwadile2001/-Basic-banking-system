@@ -1,0 +1,67 @@
+<!-- - Including header file from components folder which contain (head tag and body opening tag) -->
+<%- include('./components/header') -%>
+
+    <!-- - Including navbar file from components folder -->
+    <%- include('./components/navbar') -%>
+    
+       
+
+        <!-- - All customers -->
+        <div class="container my-3">
+            <h2 class="text-center fw-bold allCustomerHeading">Transaction History </h2>
+
+            <!-- - Customers table -->
+            <div class="container my-5 cus_all_user_tbl">
+                <table class="table table-bordered table-striped ">
+                    <thead class="text-light tablehead text-center">
+                        <tr>
+                            <th scope="col">Sender</th>
+                            <th scope="col">Receiver</th>
+                            <th scope="col">Balance</th>
+                            <th scope="col">Date</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        <% if(records.length> 0) {%>
+                            <% records.forEach((row)=> {%>
+
+                                <tr>
+                                    <td>
+                                        <%= row.semail %>
+                                    </td>
+
+                                    <td>
+                                        <%= row.remail %>
+                                    </td>
+
+                                    <td>
+                                        <%= row.amount %>
+                                    </td>
+
+                                    <td>
+                                        <%= row.date %>
+                                    </td>
+                                    
+                                </tr>
+
+                                <%}) %>
+
+                                    <%} else{%>
+                                        <tr class="bg-warning">
+                                            <td>No records found</td>
+                                        </tr>
+                                        <%}%>
+
+
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+
+        <!-- - Including footer file from component folder which contain (body closing tag) -->
+        <%- include('./components/footer') -%>

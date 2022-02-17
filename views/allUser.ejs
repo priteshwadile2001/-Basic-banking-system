@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- * Bootstap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <!-- * FontAwsome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- * Custom CSS LINK  -->
+    <link rel="stylesheet" href="./CSS/style.css">
+
+    <!-- * Custom CSS ejs LINK  -->
+    <link rel="stylesheet" href="./CSS/ejsStyle.css">
+
+    <title>
+        <%- title %>
+    </title>
+
+</head>
+
+
+
+
+
+
+
+<!-- - Including header file from components folder which contain (head tag and body opening tag) -->
+<%- include('./components/header') -%>
+
+    <!-- - Including navbar file from components folder -->
+    <%- include('./components/navbar') -%>
+
+        <!-- - All customers -->
+        <div class="container my-3">
+            <h2 class="text-center fw-bold allCustomerHeading">All Customers List</h2>
+
+            <!-- - Customers table -->
+            <div class="container my-5 cus_all_user_tbl">
+                <table class="table table-bordered table-striped">
+                    <thead class="text-light tablehead text-center">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Balance</th>
+                            <th scope="col">View User & Transfer Money</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        <% if(records.length> 0) {%>
+                            <% records.forEach((row)=> {%>
+                                <tr>
+                                    <td>
+                                        <%= row.name%>
+                                    </td>
+                                    <td>
+                                        <%= row.email%>
+                                    </td>
+
+                                    <td>
+                                        <%= row.amount%>
+                                    </td>
+                                    <td>
+
+                                        <a href="/view/<%= row._id %>" class="btn viewTransferBtn">View & Transfer Funds</a>
+
+
+                                    </td>
+                                    
+                                </tr>
+
+                                <%}) %>
+
+                                    <%} else{%>
+                                        <tr class="bg-warning">
+                                            <td>No records found</td>
+                                        </tr>
+                                        <%}%>
+
+
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+
+        <!-- - Including footer file from component folder which contain (body closing tag) -->
+        <%- include('./components/footer') -%>
+
+
+
+
+
+</html>

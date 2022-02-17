@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- * Bootstap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <!-- * FontAwsome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- * Custom CSS LINK  -->
+    <link rel="stylesheet" href="../CSS/style.css">
+
+    <!-- * Custom CSS LINK  -->
+    <link rel="stylesheet" href="../CSS/ejsStyle.css">
+
+    <!-- ViewUser Css File -->
+    <link rel="stylesheet" href="../CSS/viewUser.css">
+
+    <title>
+        <%- title %>
+    </title>
+
+
+</head>
+
+<body>
+    <!-- - Including navbar file from components folder -->
+    <%- include('./components/navbar') -%>
+
+
+
+
+        <div class="container  d-flex mt-1 custom_details_container">
+            <!-- - user Details -->
+            <div class="d_left p-2">
+                <div class="container topHeading text-center ">
+                    <h4 class=" fw-bold p-2">User Details</h4>
+                </div>
+
+                <div class="container">
+                    <div class="container text-center ">
+                        <i class="fas fa-user-tie border rounded p-4 user_ejs_icon profileIcon "></i>
+                    </div>
+
+                    <!-- - fetching details -->
+                    <div class="container my-4 details">
+
+
+                        <% if(records.length> 0){%>
+                            <% records.forEach((row)=> {%>
+                                <h4 class=" userDetail">
+                                    Name : <%= row.name %>
+                                </h4>
+                                <h4 class=" userDetail">
+                                    Email : <%= row.email %>
+                                </h4>
+                                <h4 class=" userDetail">
+                                    Mobile : <%= row.mob %>
+                                </h4>
+
+                                <h4 class=" userDetail">
+                                    Amount : <%= row.amount %>
+                                </h4>
+
+                                <%}) %>
+
+                                    <%} %>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- - Payment Details -->
+            <div class="d_right p-2">
+                <div class="container topHeading mt-3  text-center ">
+                    <h4 class="  fw-bold p-2">Transfer Details</h4>
+                </div>
+                <div class="container my-4 mb-5">
+                    <form action="/transfer" method="POST">
+                        <div class="form-group my-3">
+                            <label for="exampleInputEmail1 fw-bold">From</label>
+                            <% records.forEach((row)=> {%>
+                                <input type="hidden" name="idName" value="<%= row._id%>"
+                                    class="form-control fw-bold text-dark">
+                                <input type="hidden" class="form-control fw-bold text-dark" name="myemail"
+                                    value="<%=row.email %>">
+
+
+                                <input type=" text" class="form-control fw-bold text-dark" name="myname"
+                                    placeholder="Enter your Name" value="<%= row.name %>" readonly>
+
+                                <%}) %>
+
+                        </div>
+                        <div class="form-group my-3">
+                            <label for="exampleInputPassword1 fw-bold">To</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="username">
+                                <option>Select User</option>
+                                <% data.forEach((row)=> {%>
+                                    <option>
+                                        <%= row.name %>
+                                    </option>
+                                    <%}) %>
+
+                            </select>
+                        </div>
+
+                        <div class="form-group my-3">
+                            <!-- <label for="exampleFormControlSelect1 fw-bold">Reciver Email address</label> -->
+
+                            <select class="form-control" id="exampleFormControlSelect1" name="email">
+                                <option>Select Email</option>
+                                <% data.forEach((row)=> {%>
+
+                                    <option>
+                                        <%= row.email %>
+                                    </option>
+                                    <%}) %>
+
+                            </select>
+                        </div>
+                        <div class="form-group my-3">
+                            <label for="exampleInputPassword1 fw-bold">Amount</label>
+                            <input type="number" class="form-control fw-bold text-dark" name="amount"
+                                placeholder="Enter Transfer Amount" required>
+                        </div>
+
+                        <button type="submit" class="btn  my-3 sendBtn">Send</button>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+
+        <footer class="page-footer font-small blue bg-dark cus_foot">
+
+
+            <div class="footer">
+                <p>Copyright &copy; Sparks Bank of India 2021</p>
+            </div>
+        
+        
+        </footer>
+
+
+        <!-- Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"></script>
+
+        <script>
+            let alert = document.getElementById('addMsg');
+            setTimeout(() => {
+                alert.style.visibility = "hidden"
+            }, 2000)
+        </script>
+
+
+</body>
+
+</html>

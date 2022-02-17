@@ -1,0 +1,86 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+.custom_details_container {
+    height: 75vh;
+    align-items: center !important;
+    /* border: 1px solid red; */
+}
+
+@media screen and (max-width: 1024px) {
+    .custom_details_container {
+        width: 100% !important;
+    }
+}
+
+
+.cus_all_user_tbl {
+    overflow: scroll;
+}
+
+.cus_foot {
+    margin-top: auto;
+}
+
+.navbarejs {
+    /* border: 2px solid; */
+    display: flex;
+    height: 67px;
+    width: 100%;
+    background-color: rgb(221, 31, 116);
+}
+
+.navbarLeftejs{
+    /* border: 2px solid black; */
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.navbarRightejs li{
+    /* border: 2px solid rgb(71, 69, 69); */
+    width: 1200px;
+    height: 79px;
+    text-decoration: none;
+    list-style: none;
+    color: white;
+    margin-right: 25px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* All cuctomers */
+.allCustomerHeading{
+    color: rgb(221, 31, 116);
+}
+
+.viewTransferBtn{
+    border: 1px solid rgb(221, 31, 116); 
+    color: rgb(221, 31, 116);;
+    
+}
+
+.viewTransferBtn:hover{
+    border: none;
+    background-color: rgb(221, 31, 116);
+    color:white;
+    
+}
+
+.tablehead{
+    background: rgb(221, 31, 116); 
+}
+.homeBtn {
+    text-decoration: none;
+    list-style: none;
+
+}
